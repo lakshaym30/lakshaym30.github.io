@@ -1,1 +1,104 @@
-Hello World
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Lakshay Maharana</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/67b5e5c948.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <header id="navbar">
+            <div id="name">
+                <a href="#intro">Lakshay Maharana</a>
+            </div>
+            <div id="links">
+                <a href="#intro" class="intro current">Home</a>
+                <a href="#about" class="about">About</a>
+                <a href="#media" class="media">Media</a>
+            </div>
+        </header>
+       <section id="intro">
+           <video id="background_video" preload="true" autoplay loop muted>
+               <source src="assets/timelapse.mp4" type="video/mp4"/>
+           </video>
+           <div id="intro_text">
+               <h1>Lakshay Maharana</h1>
+               <br>
+               <br>
+               <h2>Developer, Student, Sports Enthusiast</h2>
+           </div>
+           <div id="social_media">
+               <a href="https://instagram.com/lakshaym30"> <img src="assets/instagram.svg"> </a>
+               <a href="https://twitter.com/LakshayMaharana"> <img src="assets/square-twitter.svg"> </a>
+               <a href="lakshaymaharana1@gmail.com"> <img src="assets/envelope-regular.svg"> </a>
+               <a href="https://open.spotify.com/playlist/0UMOwMb5kzfobq4VmUqTt0?si=680deb85758b4b0c"> <img src="assets/spotify.svg"> </a>
+           </div>
+       </section>
+       <section id="about">
+           <div id="about_description">
+               <h1>Hey, I'm Lakshay!</h1>
+               <br>
+               <br>
+               <h3>I'm currently a junior at the University of Illinois majoring in Computer Science + Economics with a minor in Statistics. I love to watch football (American and global), play Spikeball, and cook foods from different cuisines. I'm from San Jose, California and also really enjoy hiking at a variety of trails back home. Feel free to shoot me a message at my email, twitter, or follow my Spotify! I've also attached a couple videos that I recently watched for you to check out.</h3>
+               <div id="modals">
+                   <button id="drake"> <img src="assets/music-solid.svg"> </button>
+                   <div id="drake_modal" class = "modal">
+                       <div class = "modal-content">
+                           <span class="close">&times;</span>
+                           <iframe src="https://www.youtube.com/embed/Hb7QblCdmNM" id="drake_iframe"></iframe>
+                       </div>
+                   </div>
+                    <button id="football"> <img src="assets/basketball-solid.svg"> </button>
+                    <div id="football_modal" class = "modal">
+                        <div class = "modal-content">
+                            <span class="close">&times;</span>
+                            <iframe src="https://www.youtube.com/embed/jRRN9qSkFoQ" id="football_iframe"></iframe>
+                        </div>
+                    </div>
+                    <button id="breaking_bad"> <img src="assets/tv-solid.svg"> </button>
+                    <div id="bb_modal" class = "modal">
+                        <div class = "modal-content">
+                            <span class="close">&times;</span>
+                            <iframe src="https://www.youtube.com/embed/iz3McWE6BjA" id="bb_iframe"></iframe>
+                        </div>
+                    </div>
+               </div>
+           </div>
+           <div id="about_photo">
+               <img src= "assets/sunset.jpg" id="sunset_photo">
+           </div>
+       </section>
+       <section id="media">
+           <div id="media_description">
+               <h1>Check out some photos of me from this past year!</h1>
+           </div>
+           <div class="carousel">
+                <div class="slides">
+                    <img src="assets/hawaii.jpg">
+                </div>
+               <div class="slides">
+                   <img src="assets/boys.jpg">
+               </div>
+               <div class="slides">
+                    <img src="assets/mantaray.JPG">
+                </div>
+                <div class="slides">
+                    <img src="assets/sf.JPG">
+                </div>
+                <a class="prev" onclick="shiftSlide(-1)">&#10094;</a>
+                <a class="next" onclick="shiftSlide(1)">&#10095;</a>
+            </div>
+           </div>
+       </section>
+       <footer>
+           <h1>Made with ❤ by Lakshay Maharana</h1>
+        </footer>
+    </body>
+    <script src="js/main.js"></script>
+</html>
+
+

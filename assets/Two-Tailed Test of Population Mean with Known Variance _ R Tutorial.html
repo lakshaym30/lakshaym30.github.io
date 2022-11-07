@@ -1,0 +1,234 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0110)http://www.r-tutor.com/elementary-statistics/hypothesis-testing/two-tailed-test-population-mean-known-variance -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr" class="js"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>Two-Tailed Test of Population Mean with Known Variance | R Tutorial</title>
+
+<link rel="prev" href="https://www.r-tutor.com/elementary-statistics/hypothesis-testing/upper-tail-test-population-mean-known-variance">
+<link rel="up" href="https://www.r-tutor.com/elementary-statistics/hypothesis-testing">
+<link rel="next" href="https://www.r-tutor.com/elementary-statistics/hypothesis-testing/lower-tail-test-population-mean-unknown-variance">
+<link rel="shortcut icon" href="https://www.r-tutor.com/sites/www.r-tutor.com/themes/elitecircle/favicon.ico" type="image/x-icon">
+<meta name="description" content="A tutorial on two-tailed test on hypothesis of population mean with known variance.">
+<meta name="keywords" content="R introduction,R tutorial,hypothesis testing,normal distribution,p-value,population mean,variance,pnorm,qnorm,sqrt">
+<meta name="copyright" content="Copyright (C) 2009 - 2014 Chi Yau. All Rights Reserved.">
+<link rel="canonical" href="https://www.r-tutor.com/elementary-statistics/hypothesis-testing/two-tailed-test-population-mean-known-variance">
+<meta name="revisit-after" content="5 days">
+<link type="text/css" rel="stylesheet" media="all" href="./Two-Tailed Test of Population Mean with Known Variance _ R Tutorial_files/aggregator.css">
+<link type="text/css" rel="stylesheet" media="all" href="./Two-Tailed Test of Population Mean with Known Variance _ R Tutorial_files/book.css">
+<link type="text/css" rel="stylesheet" media="all" href="./Two-Tailed Test of Population Mean with Known Variance _ R Tutorial_files/node.css">
+<link type="text/css" rel="stylesheet" media="all" href="./Two-Tailed Test of Population Mean with Known Variance _ R Tutorial_files/defaults.css">
+<link type="text/css" rel="stylesheet" media="all" href="./Two-Tailed Test of Population Mean with Known Variance _ R Tutorial_files/system.css">
+<link type="text/css" rel="stylesheet" media="all" href="./Two-Tailed Test of Population Mean with Known Variance _ R Tutorial_files/system-menus.css">
+<link type="text/css" rel="stylesheet" media="all" href="./Two-Tailed Test of Population Mean with Known Variance _ R Tutorial_files/user.css">
+<link type="text/css" rel="stylesheet" media="all" href="./Two-Tailed Test of Population Mean with Known Variance _ R Tutorial_files/jquerymenu.css">
+<link type="text/css" rel="stylesheet" media="all" href="./Two-Tailed Test of Population Mean with Known Variance _ R Tutorial_files/quotes.css">
+<link type="text/css" rel="stylesheet" media="all" href="./Two-Tailed Test of Population Mean with Known Variance _ R Tutorial_files/views.css">
+<link type="text/css" rel="stylesheet" media="all" href="./Two-Tailed Test of Population Mean with Known Variance _ R Tutorial_files/style.css">
+<link type="text/css" rel="stylesheet" media="all" href="./Two-Tailed Test of Population Mean with Known Variance _ R Tutorial_files/tex4ht.css">
+<!--[if IE]>
+  <link type="text/css" rel="stylesheet" media="all" href="/sites/www.r-tutor.com/themes/elitecircle/fix-ie.css" /><![endif]-->
+<script type="text/javascript" async="" src="./Two-Tailed Test of Population Mean with Known Variance _ R Tutorial_files/ga.js"></script><script type="text/javascript" async="" src="./Two-Tailed Test of Population Mean with Known Variance _ R Tutorial_files/ga.js"></script><script type="text/javascript" src="./Two-Tailed Test of Population Mean with Known Variance _ R Tutorial_files/jquery.js"></script>
+<script type="text/javascript" src="./Two-Tailed Test of Population Mean with Known Variance _ R Tutorial_files/drupal.js"></script>
+<script type="text/javascript" src="./Two-Tailed Test of Population Mean with Known Variance _ R Tutorial_files/googleanalytics.js"></script>
+<script type="text/javascript" src="./Two-Tailed Test of Population Mean with Known Variance _ R Tutorial_files/jquerymenu.js"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+jQuery.extend(Drupal.settings, { "basePath": "/", "googleanalytics": { "trackOutbound": 1, "trackMailto": 1, "trackDownload": 1, "trackDownloadExtensions": "7z|aac|arc|arj|asf|asx|avi|bin|csv|doc|exe|flv|gif|gz|gzip|hqx|jar|jpe?g|js|mp(2|3|4|e?g)|mov(ie)?|msi|msp|pdf|phps|png|ppt|qtm?|ra(m|r)?|sea|sit|tar|tgz|torrent|txt|wav|wma|wmv|wpd|xls|xml|z|zip" } });
+//--><!]]>
+</script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+window.google_analytics_uacct = "UA-9827360-1";
+//--><!]]>
+</script>
+<script type="text/javascript"> </script>
+<!--<base href="https://www.r-tutor.com/sites/default/files/images/">--><base href=".">
+</head>
+		
+<body class="not-front not-logged-in page-node node-type-story one-sidebar sidebar-right">
+	
+	<!-- header starts here -->
+	<div id="header-wrap"><div id="header-content">	
+		
+		<div id="logo"><a href="https://www.r-tutor.com/">R<span class="orange"> Tutorial</span></a></div>	
+		    		<h2 id="slogan">An R Introduction to Statistics</h2>
+   		
+		<div id="header-links">
+                    <ul class="links secondary-links"><li class="menu-262 first"><a href="https://www.r-tutor.com/content/about" title="About us">About</a></li>
+<li class="menu-2376"><a href="https://www.r-tutor.com/content/contact-us" title="Contact us for suggestion and comments.">Contact</a></li>
+<li class="menu-914"><a href="https://www.r-tutor.com/content/resources" title="Useful links and resources">Resources</a></li>
+<li class="menu-906 last"><a href="https://www.r-tutor.com/content/terms-use" title="The legal usage terms of r-tutor.com">Terms of Use</a></li>
+</ul>        		</div>
+		
+		<!-- Menu Tabs -->
+		   			<ul class="links primary-links"><li class="menu-260 first"><a href="https://www.r-tutor.com/" title="Home page">Home</a></li>
+<li class="menu-2332"><a href="https://www.r-tutor.com/content/download" title="Download page">Download</a></li>
+<li class="menu-2515"><a href="https://www.r-tutor.com/content/sales" title="Sales">Sales</a></li>
+<li class="menu-2419"><a href="https://www.r-tutor.com/content/r-tutorial-ebook" title="R Tutorial and Exercise Solution eBook">eBook</a></li>
+<li class="menu-1073 last"><a href="https://www.r-tutor.com/sitemap" title="Site index and RSS feed">Site Map</a></li>
+</ul>   			
+	</div></div>
+				
+	<!-- content-wrap starts here -->
+	<div id="content-wrap"><div id="content">
+	
+	    <div id="main">		
+												<h1>Two-Tailed Test of Population Mean with Known Variance</h1>	 		<div id="node-73" class="node">
+
+
+<div class="submitted">
+    </div>
+
+<div class="content clear-block">
+    
+<!--l. 206--><p class="noindent">The null hypothesis of the <span class="ecbx-1000">two-tailed test of the population mean </span>can be
+expressed as follows:
+</p>
+   <center class="math-display">
+<img src="./Two-Tailed Test of Population Mean with Known Variance _ R Tutorial_files/hypothesis-testing4x.png" alt="μ = μ0
+" class="math-display"></center>
+<!--l. 208--><p class="nopar"> where <span class="cmmi-10">μ</span><sub><span class="cmr-7">0</span></sub> is a hypothesized value of the true population mean <span class="cmmi-10">μ</span>.
+</p><!--l. 212--><p class="indent">   Let us define the test statistic <span class="cmmi-10">z </span>in terms of the <a href="https://www.r-tutor.com/node/35">sample mean</a>, the sample size and
+the <a href="https://www.r-tutor.com/node/43">population standard deviation</a> <span class="cmmi-10">σ</span><span class="cmmi-10">&nbsp;</span>:
+</p>
+   <center class="par-math-display">
+<img src="./Two-Tailed Test of Population Mean with Known Variance _ R Tutorial_files/hypothesis-testing5x.png" alt="    ¯x− μ0
+z = σ∕√n--
+" class="par-math-display"></center>
+<!--l. 217--><p class="nopar">
+</p><!--l. 220--><p class="indent">   Then the null hypothesis of the two-tailed test is to be <span class="ecti-1000">rejected </span>if <span class="cmmi-10">z </span><span class="cmsy-10">≤−</span><span class="cmmi-10">z</span><sub><span class="cmmi-7">α∕</span><span class="cmr-7">2</span></sub> or
+<span class="cmmi-10">z </span><span class="cmsy-10">≥ </span><span class="cmmi-10">z</span><sub><span class="cmmi-7">α∕</span><span class="cmr-7">2</span></sub> , where <span class="cmmi-10">z</span><sub><span class="cmmi-7">α∕</span><span class="cmr-7">2</span></sub> is the <span class="cmr-10">100(1 </span><span class="cmsy-10">− </span><span class="cmmi-10">α∕</span><span class="cmr-10">2) </span><a href="https://www.r-tutor.com/node/38">percentile</a> of the <a href="https://www.r-tutor.com/node/58">standard normal
+distribution</a>.
+</p><!--l. 225--><p class="noindent">
+</p>
+   <h4 class="likesubsectionHead"><a id="x4-120003"></a>Problem</h4>
+<!--l. 227--><p class="noindent">Suppose the mean weight of King Penguins found in an Antarctic colony last year
+was 15.4 kg. In a sample of 35 penguins same time this year in the same colony, the
+mean penguin weight is 14.6 kg. Assume the population standard deviation is 2.5 kg.
+At .05 significance level, can we reject the null hypothesis that the mean penguin
+weight does not differ from last year?
+</p><!--l. 235--><p class="noindent">
+</p>
+   <h4 class="likesubsectionHead"><a id="x4-130003"></a>Solution</h4>
+                                                                  
+
+                                                                  
+<!--l. 237--><p class="noindent">The null hypothesis is that <span class="cmmi-10">μ </span><span class="cmr-10">= 15</span><span class="cmmi-10">.</span><span class="cmr-10">4</span>. We begin with computing the test
+statistic.
+</p>
+   <!--l. 241-->
+   <div class="lstlisting" id="listing-7"><span class="label"><a id="x4-13001r1"></a></span>&gt;&nbsp;xbar&nbsp;=&nbsp;14.6&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;sample&nbsp;mean&nbsp;<br><span class="label"><a id="x4-13002r2"></a></span>&gt;&nbsp;mu0&nbsp;=&nbsp;15.4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;hypothesized&nbsp;value&nbsp;<br><span class="label"><a id="x4-13003r3"></a></span>&gt;&nbsp;sigma&nbsp;=&nbsp;2.5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;population&nbsp;standard&nbsp;deviation&nbsp;<br><span class="label"><a id="x4-13004r4"></a></span>&gt;&nbsp;n&nbsp;=&nbsp;35&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;sample&nbsp;size&nbsp;<br><span class="label"><a id="x4-13005r5"></a></span>&gt;&nbsp;z&nbsp;=&nbsp;(xbar<span class="cmsy-10">−</span>mu0)/(sigma/sqrt(n))&nbsp;<br><span class="label"><a id="x4-13006r6"></a></span>&gt;&nbsp;z&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;test&nbsp;statistic&nbsp;<br><span class="label"><a id="x4-13007r7"></a></span>[1]&nbsp;<span class="cmsy-10">−</span>1.8931
+   
+   </div>
+<!--l. 252--><p class="indent">   We then compute the critical values at .05 significance level.
+</p>
+   <!--l. 255-->
+   <div class="lstlisting" id="listing-8"><span class="label"><a id="x4-13008r1"></a></span>&gt;&nbsp;alpha&nbsp;=&nbsp;.05&nbsp;<br><span class="label"><a id="x4-13009r2"></a></span>&gt;&nbsp;z.half.alpha&nbsp;=&nbsp;qnorm(1<span class="cmsy-10">−</span>alpha/2)&nbsp;<br><span class="label"><a id="x4-13010r3"></a></span>&gt;&nbsp;c(<span class="cmsy-10">−</span>z.half.alpha,&nbsp;z.half.alpha)&nbsp;<br><span class="label"><a id="x4-13011r4"></a></span>[1]&nbsp;<span class="cmsy-10">−</span>1.9600&nbsp;&nbsp;1.9600
+   
+   </div>
+<!--l. 264--><p class="noindent">
+</p>
+   <h4 class="likesubsectionHead"><a id="x4-140003"></a>Answer</h4>
+<!--l. 266--><p class="noindent">The test statistic -1.8931 lies between the critical values -1.9600 and 1.9600. Hence,
+at .05 significance level, we do <span class="ecti-1000">not </span>reject the null hypothesis that the mean penguin
+weight does not differ from last year.
+</p><!--l. 272--><p class="noindent">
+</p>
+   <h4 class="likesubsectionHead"><a id="x4-150003"></a>Alternative Solution</h4>
+<!--l. 274--><p class="noindent">Instead of using the critical value, we apply the <span class="ecss-1000">pnorm </span>function to compute the
+two-tailed <span class="ecbx-1000">p-value </span>of the test statistic. It doubles the <span class="ecti-1000">lower </span>tail p-value as the
+sample mean is <span class="ecti-1000">less </span>than the hypothesized value. Since it turns out to be greater
+than the .05 significance level, we do <span class="ecti-1000">not </span>reject the null hypothesis that
+<span class="cmmi-10">μ </span><span class="cmr-10">= 15</span><span class="cmmi-10">.</span><span class="cmr-10">4</span>.
+</p>
+   <!--l. 282-->
+   <div class="lstlisting" id="listing-9"><span class="label"><a id="x4-15001r1"></a></span>&gt;&nbsp;pval&nbsp;=&nbsp;2&nbsp;<span class="cmsy-10">∗</span>&nbsp;pnorm(z)&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;lower&nbsp;tail&nbsp;<br><span class="label"><a id="x4-15002r2"></a></span>&gt;&nbsp;pval&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;two<span class="cmsy-10">−</span>tailed&nbsp;p<span class="cmsy-10">−</span>value&nbsp;<br><span class="label"><a id="x4-15003r3"></a></span>[1]&nbsp;0.058339
+   
+   </div>  <div id="book-navigation-3" class="book-navigation">
+    
+        <div class="page-links clear-block">
+              <a href="https://www.r-tutor.com/elementary-statistics/hypothesis-testing/upper-tail-test-population-mean-known-variance" class="page-previous" title="Go to previous page">‹ Upper Tail Test of Population Mean with Known Variance</a>
+                    <a href="https://www.r-tutor.com/elementary-statistics/hypothesis-testing" class="page-up" title="Go to parent page">up</a>
+                    <a href="https://www.r-tutor.com/elementary-statistics/hypothesis-testing/lower-tail-test-population-mean-unknown-variance" class="page-next" title="Go to next page">Lower Tail Test of Population Mean with Unknown Variance ›</a>
+          </div>
+    
+  </div>
+</div>
+
+    <div class="node-links">
+                    <div class="terms">
+                Tags:  <ul class="links inline"><li class="taxonomy_term_24 first"><a href="https://www.r-tutor.com/category/r-tutorial/elementary-statistics-r" rel="tag" title="Tutorials on elementary statistics with R.">Elementary Statistics with R</a></li>
+<li class="taxonomy_term_148"><a href="https://www.r-tutor.com/category/statistical-concept/hypothesis-testing" rel="tag" title="">hypothesis testing</a></li>
+<li class="taxonomy_term_111"><a href="https://www.r-tutor.com/category/statistical-concept/normal-distribution" rel="tag" title="">normal distribution</a></li>
+<li class="taxonomy_term_151"><a href="https://www.r-tutor.com/category/statistical-concept/p-value" rel="tag" title="">p-value</a></li>
+<li class="taxonomy_term_121"><a href="https://www.r-tutor.com/category/statistical-concept/population-mean" rel="tag" title="">population mean</a></li>
+<li class="taxonomy_term_95"><a href="https://www.r-tutor.com/category/statistical-concept/variance" rel="tag" title="">variance</a></li>
+<li class="taxonomy_term_152"><a href="https://www.r-tutor.com/category/r-functions/pnorm" rel="tag" title="">pnorm</a></li>
+<li class="taxonomy_term_112"><a href="https://www.r-tutor.com/category/r-functions/qnorm" rel="tag" title="">qnorm</a></li>
+<li class="taxonomy_term_125 last"><a href="https://www.r-tutor.com/category/r-functions/sqrt" rel="tag" title="">sqrt</a></li>
+</ul>            </div>
+                <div class="post-footer align-right">
+                        <ul class="links inline"><li class="comment_forbidden first last"></li>
+</ul>        </div>
+    </div>
+
+</div>
+	 		<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var _gaq = _gaq || [];_gaq.push(["_setAccount", "UA-9827360-1"]);_gaq.push(["_trackPageview"]);(function() {var ga = document.createElement("script");ga.type = "text/javascript";ga.async = true;ga.src = ("https:" == document.location.protocol ? "https://ssl" : "http://www") + ".google-analytics.com/ga.js";var s = document.getElementsByTagName("script")[0];s.parentNode.insertBefore(ga, s);})();
+//--><!]]>
+</script>
+		</div>		
+	
+		<div id="sidebar">	
+      		                <div id="search-box"><form action="https://www.r-tutor.com/elementary-statistics/hypothesis-testing/two-tailed-test-population-mean-known-variance" accept-charset="UTF-8" method="post" id="search-theme-form">
+<div><div id="search" class="container-inline">
+  <div class="form-item" id="edit-search-theme-form-1-wrapper">
+ <label for="edit-search-theme-form-1">Search this site: </label>
+ <input type="text" maxlength="128" name="search_theme_form" id="edit-search-theme-form-1" size="15" value="" title="Enter the terms you wish to search for." class="form-text">
+</div>
+<input type="submit" name="op" id="edit-submit" value="Search" class="form-submit">
+<input type="hidden" name="form_build_id" id="form-wnz7PEiMhBSpAsuf5N3qcfSqHRfiCqBcSfzGKXCac7k" value="form-wnz7PEiMhBSpAsuf5N3qcfSqHRfiCqBcSfzGKXCac7k">
+<input type="hidden" name="form_id" id="edit-search-theme-form" value="search_theme_form">
+</div>
+
+</div></form>
+</div>
+        	
+                        <div id="block-rtutorbook_e2-0" class="block block-rtutorbook_e2">
+  <h2><a href="https://www.r-tutor.com/content/r-tutorial-ebook">R Tutorial eBook</a></h2>
+
+  <div class="content">
+    <a href="https://www.r-tutor.com/content/r-tutorial-ebook"><img src="./Two-Tailed Test of Population Mean with Known Variance _ R Tutorial_files/r-tutorial-thumbnail-v6-140x182.jpg" alt="R Tutorial eBook"></a>  </div>
+</div>
+<div id="block-advancedbookblocks-0" class="block block-advancedbookblocks">
+  <h2>R Tutorials</h2>
+
+  <div class="content">
+    <!--[if IE]><div class="ie"><![endif]--><ul class="menu jquerymenu jquerymenu-processed"><li class="parent closed"><span class="parent closed"></span><a href="https://www.r-tutor.com/r-introduction" title="R Introduction">R Introduction</a><ul><li class="parent closed"><span class="parent closed"></span><a href="https://www.r-tutor.com/r-introduction/basic-data-types" title="Basic Data Types">Basic Data Types</a><ul><li><a href="https://www.r-tutor.com/r-introduction/basic-data-types/numeric" title="Numeric">Numeric</a></li><li><a href="https://www.r-tutor.com/r-introduction/basic-data-types/integer" title="Integer">Integer</a></li><li><a href="https://www.r-tutor.com/r-introduction/basic-data-types/complex" title="Complex">Complex</a></li><li><a href="https://www.r-tutor.com/r-introduction/basic-data-types/logical" title="Logical">Logical</a></li><li><a href="https://www.r-tutor.com/r-introduction/basic-data-types/character" title="Character">Character</a></li></ul></li><li class="parent closed"><span class="parent closed"></span><a href="https://www.r-tutor.com/r-introduction/vector" title="Vector">Vector</a><ul><li><a href="https://www.r-tutor.com/r-introduction/vector/combining-vectors" title="Combining Vectors">Combining Vectors</a></li><li><a href="https://www.r-tutor.com/r-introduction/vector/vector-arithmetics" title="Vector Arithmetics">Vector Arithmetics</a></li><li><a href="https://www.r-tutor.com/r-introduction/vector/vector-index" title="Vector Index">Vector Index</a></li><li><a href="https://www.r-tutor.com/r-introduction/vector/numeric-index-vector" title="Numeric Index Vector">Numeric Index Vector</a></li><li><a href="https://www.r-tutor.com/r-introduction/vector/logical-index-vector" title="Logical Index Vector">Logical Index Vector</a></li><li><a href="https://www.r-tutor.com/r-introduction/vector/named-vector-members" title="Named Vector Members">Named Vector Members</a></li></ul></li><li class="parent closed"><span class="parent closed"></span><a href="https://www.r-tutor.com/r-introduction/matrix" title="Matrix">Matrix</a><ul><li><a href="https://www.r-tutor.com/r-introduction/matrix/matrix-construction" title="Matrix Construction">Matrix Construction</a></li></ul></li><li class="parent closed"><span class="parent closed"></span><a href="https://www.r-tutor.com/r-introduction/list" title="List">List</a><ul><li><a href="https://www.r-tutor.com/r-introduction/list/named-list-members" title="Named List Members">Named List Members</a></li></ul></li><li class="parent closed"><span class="parent closed"></span><a href="https://www.r-tutor.com/r-introduction/data-frame" title="Data Frame">Data Frame</a><ul><li><a href="https://www.r-tutor.com/r-introduction/data-frame/data-frame-column-vector" title="Data Frame Column Vector">Data Frame Column Vector</a></li><li><a href="https://www.r-tutor.com/r-introduction/data-frame/data-frame-column-slice" title="Data Frame Column Slice">Data Frame Column Slice</a></li><li><a href="https://www.r-tutor.com/r-introduction/data-frame/data-frame-row-slice" title="Data Frame Row Slice">Data Frame Row Slice</a></li><li><a href="https://www.r-tutor.com/r-introduction/data-frame/data-import" title="Data Import">Data Import</a></li></ul></li></ul></li><li class="parent open active-trail"><span class="parent open active-trail"></span><a href="https://www.r-tutor.com/elementary-statistics" title="Elementary Statistics with R">Elementary Statistics with R</a><ul><li class="parent closed"><span class="parent closed"></span><a href="https://www.r-tutor.com/elementary-statistics/qualitative-data" title="Qualitative Data">Qualitative Data</a><ul><li><a href="https://www.r-tutor.com/elementary-statistics/qualitative-data/frequency-distribution-qualitative-data" title="Frequency Distribution of Qualitative Data">Frequency Distribution of Qualitative Data</a></li><li><a href="https://www.r-tutor.com/elementary-statistics/qualitative-data/relative-frequency-distribution-qualitative-data" title="Relative Frequency Distribution of Qualitative Data">Relative Frequency Distribution of Qualitative Data</a></li><li><a href="https://www.r-tutor.com/elementary-statistics/qualitative-data/bar-graph" title="Bar Graph">Bar Graph</a></li><li><a href="https://www.r-tutor.com/elementary-statistics/qualitative-data/pie-chart" title="Pie Chart">Pie Chart</a></li><li><a href="https://www.r-tutor.com/elementary-statistics/qualitative-data/category-statistics" title="Category Statistics">Category Statistics</a></li></ul></li><li class="parent closed"><span class="parent closed"></span><a href="https://www.r-tutor.com/elementary-statistics/quantitative-data" title="Quantitative Data">Quantitative Data</a><ul><li><a href="https://www.r-tutor.com/elementary-statistics/quantitative-data/frequency-distribution-quantitative-data" title="Frequency Distribution of Quantitative Data">Frequency Distribution of Quantitative Data</a></li><li><a href="https://www.r-tutor.com/elementary-statistics/quantitative-data/histogram" title="Histogram">Histogram</a></li><li><a href="https://www.r-tutor.com/elementary-statistics/quantitative-data/relative-frequency-distribution-quantitative-data" title="Relative Frequency Distribution of Quantitative Data">Relative Frequency Distribution of Quantitative Data</a></li><li><a href="https://www.r-tutor.com/elementary-statistics/quantitative-data/cumulative-frequency-distribution" title="Cumulative Frequency Distribution">Cumulative Frequency Distribution</a></li><li><a href="https://www.r-tutor.com/elementary-statistics/quantitative-data/cumulative-frequency-graph" title="Cumulative Frequency Graph">Cumulative Frequency Graph</a></li><li><a href="https://www.r-tutor.com/elementary-statistics/quantitative-data/cumulative-relative-frequency-distribution" title="Cumulative Relative Frequency Distribution">Cumulative Relative Frequency Distribution</a></li><li><a href="https://www.r-tutor.com/elementary-statistics/quantitative-data/cumulative-relative-frequency-graph" title="Cumulative Relative Frequency Graph">Cumulative Relative Frequency Graph</a></li><li><a href="https://www.r-tutor.com/elementary-statistics/quantitative-data/stem-and-leaf-plot" title="Stem-and-Leaf Plot">Stem-and-Leaf Plot</a></li><li><a href="https://www.r-tutor.com/elementary-statistics/quantitative-data/scatter-plot" title="Scatter Plot">Scatter Plot</a></li></ul></li><li class="parent closed"><span class="parent closed"></span><a href="https://www.r-tutor.com/elementary-statistics/numerical-measures" title="Numerical Measures">Numerical Measures</a><ul><li><a href="https://www.r-tutor.com/elementary-statistics/numerical-measures/mean" title="Mean">Mean</a></li><li><a href="https://www.r-tutor.com/elementary-statistics/numerical-measures/median" title="Median">Median</a></li><li><a href="https://www.r-tutor.com/elementary-statistics/numerical-measures/quartile" title="Quartile">Quartile</a></li><li><a href="https://www.r-tutor.com/elementary-statistics/numerical-measures/percentile" title="Percentile">Percentile</a></li><li><a href="https://www.r-tutor.com/elementary-statistics/numerical-measures/range" title="Range">Range</a></li><li><a href="https://www.r-tutor.com/elementary-statistics/numerical-measures/interquartile-range" title="Interquartile Range">Interquartile Range</a></li><li><a href="https://www.r-tutor.com/elementary-statistics/numerical-measures/box-plot" title="Box Plot">Box Plot</a></li><li><a href="https://www.r-tutor.com/elementary-statistics/numerical-measures/variance" title="Variance">Variance</a></li><li><a href="https://www.r-tutor.com/elementary-statistics/numerical-measures/standard-deviation" title="Standard Deviation">Standard Deviation</a></li><li><a href="https://www.r-tutor.com/elementary-statistics/numerical-measures/covariance" title="Covariance">Covariance</a></li><li><a href="https://www.r-tutor.com/elementary-statistics/numerical-measures/correlation-coefficient" title="Correlation Coefficient">Correlation Coefficient</a></li><li><a href="https://www.r-tutor.com/elementary-statistics/numerical-measures/moment" title="Central Moment">Central Moment</a></li><li><a href="https://www.r-tutor.com/elementary-statistics/numerical-measures/skewness" title="Skewness">Skewness</a></li><li><a href="https://www.r-tutor.com/elementary-statistics/numerical-measures/kurtosis" title="Kurtosis">Kurtosis</a></li></ul></li><li class="parent closed"><span class="parent closed"></span><a href="https://www.r-tutor.com/elementary-statistics/probability-distributions" title="Probability Distributions">Probability Distributions</a><ul><li><a href="https://www.r-tutor.com/elementary-statistics/probability-distributions/binomial-distribution" title="Binomial Distribution">Binomial Distribution</a></li><li><a href="https://www.r-tutor.com/elementary-statistics/probability-distributions/poisson-distribution" title="Poisson Distribution">Poisson Distribution</a></li><li><a href="https://www.r-tutor.com/elementary-statistics/probability-distributions/continuous-uniform-distribution" title="Continuous Uniform Distribution">Continuous Uniform Distribution</a></li><li><a href="https://www.r-tutor.com/elementary-statistics/probability-distributions/exponential-distribution" title="Exponential Distribution">Exponential Distribution</a></li><li><a href="https://www.r-tutor.com/elementary-statistics/probability-distributions/normal-distribution" title="Normal Distribution">Normal Distribution</a></li><li><a href="https://www.r-tutor.com/elementary-statistics/probability-distributions/chi-squared-distribution" title="Chi-squared Distribution">Chi-squared Distribution</a></li><li><a href="https://www.r-tutor.com/elementary-statistics/probability-distributions/student-t-distribution" title="Student t Distribution">Student t Distribution</a></li><li><a href="https://www.r-tutor.com/elementary-statistics/probability-distributions/f-distribution" title="F Distribution">F Distribution</a></li></ul></li><li class="parent closed"><span class="parent closed"></span><a href="https://www.r-tutor.com/elementary-statistics/interval-estimation" title="Interval Estimation">Interval Estimation</a><ul><li><a href="https://www.r-tutor.com/elementary-statistics/interval-estimation/point-estimate-population-mean" title="Point Estimate of Population Mean">Point Estimate of Population Mean</a></li><li><a href="https://www.r-tutor.com/elementary-statistics/interval-estimation/interval-estimate-population-mean-known-variance" title="Interval Estimate of Population Mean with Known Variance">Interval Estimate of Population Mean with Known Variance</a></li><li><a href="https://www.r-tutor.com/elementary-statistics/interval-estimation/interval-estimate-population-mean-unknown-variance" title="Interval Estimate of Population Mean with Unknown Variance">Interval Estimate of Population Mean with Unknown Variance</a></li><li><a href="https://www.r-tutor.com/elementary-statistics/interval-estimation/sampling-size-population-mean" title="Sampling Size of Population Mean">Sampling Size of Population Mean</a></li><li><a href="https://www.r-tutor.com/elementary-statistics/interval-estimation/point-estimate-population-proportion" title="Point Estimate of Population Proportion">Point Estimate of Population Proportion</a></li><li><a href="https://www.r-tutor.com/elementary-statistics/interval-estimation/interval-estimate-population-proportion" title="Interval Estimate of Population Proportion">Interval Estimate of Population Proportion</a></li><li><a href="https://www.r-tutor.com/elementary-statistics/interval-estimation/sampling-size-population-proportion" title="Sampling Size of Population Proportion">Sampling Size of Population Proportion</a></li></ul></li><li class="parent open active-trail"><span class="parent open active-trail"></span><a href="https://www.r-tutor.com/elementary-statistics/hypothesis-testing" title="Hypothesis Testing">Hypothesis Testing</a><ul><li><a href="https://www.r-tutor.com/elementary-statistics/hypothesis-testing/lower-tail-test-population-mean-known-variance" title="Lower Tail Test of Population Mean with Known Variance">Lower Tail Test of Population Mean with Known Variance</a></li><li><a href="https://www.r-tutor.com/elementary-statistics/hypothesis-testing/upper-tail-test-population-mean-known-variance" title="Upper Tail Test of Population Mean with Known Variance">Upper Tail Test of Population Mean with Known Variance</a></li><li class="active"><a href="https://www.r-tutor.com/elementary-statistics/hypothesis-testing/two-tailed-test-population-mean-known-variance" title="Two-Tailed Test of Population Mean with Known Variance" class="active">Two-Tailed Test of Population Mean with Known Variance</a></li><li><a href="https://www.r-tutor.com/elementary-statistics/hypothesis-testing/lower-tail-test-population-mean-unknown-variance" title="Lower Tail Test of Population Mean with Unknown Variance">Lower Tail Test of Population Mean with Unknown Variance</a></li><li><a href="https://www.r-tutor.com/elementary-statistics/hypothesis-testing/upper-tail-test-population-mean-unknown-variance" title="Upper Tail Test of Population Mean with Unknown Variance">Upper Tail Test of Population Mean with Unknown Variance</a></li><li><a href="https://www.r-tutor.com/elementary-statistics/hypothesis-testing/two-tailed-test-population-mean-unknown-variance" title="Two-Tailed Test of Population Mean with Unknown Variance">Two-Tailed Test of Population Mean with Unknown Variance</a></li><li><a href="https://www.r-tutor.com/elementary-statistics/hypothesis-testing/lower-tail-test-population-proportion" title="Lower Tail Test of Population Proportion">Lower Tail Test of Population Proportion</a></li><li><a href="https://www.r-tutor.com/elementary-statistics/hypothesis-testing/upper-tail-test-population-proportion" title="Upper Tail Test of Population Proportion">Upper Tail Test of Population Proportion</a></li><li><a href="https://www.r-tutor.com/elementary-statistics/hypothesis-testing/two-tailed-test-population-proportion" title="Two-Tailed Test of Population Proportion">Two-Tailed Test of Population Proportion</a></li></ul></li><li class="parent closed"><span class="parent closed"></span><a href="https://www.r-tutor.com/elementary-statistics/type-2-errors" title="Type II Error">Type II Error</a><ul><li><a href="https://www.r-tutor.com/elementary-statistics/type-2-errors/type-2-errors-lower-tail-test-population-mean-known-variance" title="Type II Error in Lower Tail Test of Population Mean with Known Variance">Type II Error in Lower Tail Test of Population Mean with Known Variance</a></li><li><a href="https://www.r-tutor.com/elementary-statistics/type-2-errors/type-2-errors-upper-tail-test-population-mean-known-variance" title="Type II Error in Upper Tail Test of Population Mean with Known Variance">Type II Error in Upper Tail Test of Population Mean with Known Variance</a></li><li><a href="https://www.r-tutor.com/elementary-statistics/type-2-errors/type-2-errors-two-tailed-test-population-mean-known-variance" title="Type II Error in Two-Tailed Test of Population Mean with Known Variance">Type II Error in Two-Tailed Test of Population Mean with Known Variance</a></li><li><a href="https://www.r-tutor.com/elementary-statistics/type-2-errors/type-2-errors-lower-tail-test-population-mean-unknown-variance" title="Type II Error in Lower Tail Test of Population Mean with Unknown Variance">Type II Error in Lower Tail Test of Population Mean with Unknown Variance</a></li><li><a href="https://www.r-tutor.com/elementary-statistics/type-2-errors/type-2-errors-upper-tail-test-population-mean-unknown-variance" title="Type II Error in Upper Tail Test of Population Mean with Unknown Variance">Type II Error in Upper Tail Test of Population Mean with Unknown Variance</a></li><li><a href="https://www.r-tutor.com/elementary-statistics/type-2-errors/type-2-errors-two-tailed-test-population-mean-unknown-variance" title="Type II Error in Two-Tailed Test of Population Mean with Unknown Variance">Type II Error in Two-Tailed Test of Population Mean with Unknown Variance</a></li></ul></li><li class="parent closed"><span class="parent closed"></span><a href="https://www.r-tutor.com/elementary-statistics/inference-about-two-populations" title="Inference About Two Populations">Inference About Two Populations</a><ul><li><a href="https://www.r-tutor.com/elementary-statistics/inference-about-two-populations/population-mean-between-two-matched-samples" title="Population Mean Between Two Matched Samples">Population Mean Between Two Matched Samples</a></li><li><a href="https://www.r-tutor.com/elementary-statistics/inference-about-two-populations/population-mean-between-two-independent-samples" title="Population Mean Between Two Independent Samples">Population Mean Between Two Independent Samples</a></li><li><a href="https://www.r-tutor.com/elementary-statistics/inference-about-two-populations/comparison-two-population-proportions" title="Comparison of Two Population Proportions">Comparison of Two Population Proportions</a></li></ul></li><li class="parent closed"><span class="parent closed"></span><a href="https://www.r-tutor.com/elementary-statistics/goodness-fit" title="Goodness of Fit">Goodness of Fit</a><ul><li><a href="https://www.r-tutor.com/elementary-statistics/goodness-fit/multinomial-goodness-fit" title="Multinomial Goodness of Fit">Multinomial Goodness of Fit</a></li><li><a href="https://www.r-tutor.com/elementary-statistics/goodness-fit/chi-squared-test-independence" title="Chi-squared Test of Independence">Chi-squared Test of Independence</a></li></ul></li><li class="parent closed"><span class="parent closed"></span><a href="https://www.r-tutor.com/elementary-statistics/analysis-variance" title="Analysis of Variance">Analysis of Variance</a><ul><li><a href="https://www.r-tutor.com/elementary-statistics/analysis-variance/completely-randomized-design" title="Completely Randomized Design">Completely Randomized Design</a></li><li><a href="https://www.r-tutor.com/elementary-statistics/analysis-variance/randomized-block-design" title="Randomized Block Design">Randomized Block Design</a></li><li><a href="https://www.r-tutor.com/elementary-statistics/analysis-variance/factorial-design" title="Factorial Design">Factorial Design</a></li></ul></li><li class="parent closed"><span class="parent closed"></span><a href="https://www.r-tutor.com/elementary-statistics/non-parametric-methods" title="Non-parametric Methods">Non-parametric Methods</a><ul><li><a href="https://www.r-tutor.com/elementary-statistics/non-parametric-methods/sign-test" title="Sign Test">Sign Test</a></li><li><a href="https://www.r-tutor.com/elementary-statistics/non-parametric-methods/wilcoxon-signed-rank-test" title="Wilcoxon Signed-Rank Test">Wilcoxon Signed-Rank Test</a></li><li><a href="https://www.r-tutor.com/elementary-statistics/non-parametric-methods/mann-whitney-wilcoxon-test" title="Mann-Whitney-Wilcoxon Test">Mann-Whitney-Wilcoxon Test</a></li><li><a href="https://www.r-tutor.com/elementary-statistics/non-parametric-methods/kruskal-wallis-test" title="Kruskal-Wallis Test">Kruskal-Wallis Test</a></li></ul></li><li class="parent closed"><span class="parent closed"></span><a href="https://www.r-tutor.com/elementary-statistics/simple-linear-regression" title="Simple Linear Regression">Simple Linear Regression</a><ul><li><a href="https://www.r-tutor.com/elementary-statistics/simple-linear-regression/estimated-simple-regression-equation" title="Estimated Simple Regression Equation">Estimated Simple Regression Equation</a></li><li><a href="https://www.r-tutor.com/elementary-statistics/simple-linear-regression/coefficient-determination" title="Coefficient of Determination">Coefficient of Determination</a></li><li><a href="https://www.r-tutor.com/elementary-statistics/simple-linear-regression/significance-test-linear-regression" title="Significance Test for Linear Regression">Significance Test for Linear Regression</a></li><li><a href="https://www.r-tutor.com/elementary-statistics/simple-linear-regression/confidence-interval-linear-regression" title="Confidence Interval for Linear Regression">Confidence Interval for Linear Regression</a></li><li><a href="https://www.r-tutor.com/elementary-statistics/simple-linear-regression/prediction-interval-linear-regression" title="Prediction Interval for Linear Regression">Prediction Interval for Linear Regression</a></li><li><a href="https://www.r-tutor.com/elementary-statistics/simple-linear-regression/residual-plot" title="Residual Plot">Residual Plot</a></li><li><a href="https://www.r-tutor.com/elementary-statistics/simple-linear-regression/standardized-residual" title="Standardized Residual">Standardized Residual</a></li><li><a href="https://www.r-tutor.com/elementary-statistics/simple-linear-regression/normal-probability-plot-residuals" title="Normal Probability Plot of Residuals">Normal Probability Plot of Residuals</a></li></ul></li><li class="parent closed"><span class="parent closed"></span><a href="https://www.r-tutor.com/elementary-statistics/multiple-linear-regression" title="Multiple Linear Regression">Multiple Linear Regression</a><ul><li><a href="https://www.r-tutor.com/elementary-statistics/multiple-linear-regression/estimated-multiple-regression-equation" title="Estimated Multiple Regression Equation">Estimated Multiple Regression Equation</a></li><li><a href="https://www.r-tutor.com/elementary-statistics/multiple-linear-regression/multiple-coefficient-determination" title="Multiple Coefficient of Determination">Multiple Coefficient of Determination</a></li><li><a href="https://www.r-tutor.com/elementary-statistics/multiple-linear-regression/adjusted-coefficient-determination" title="Adjusted Coefficient of Determination">Adjusted Coefficient of Determination</a></li><li><a href="https://www.r-tutor.com/elementary-statistics/multiple-linear-regression/significance-test-mlr" title="Significance Test for MLR">Significance Test for MLR</a></li><li><a href="https://www.r-tutor.com/elementary-statistics/multiple-linear-regression/confidence-interval-mlr" title="Confidence Interval for MLR">Confidence Interval for MLR</a></li><li><a href="https://www.r-tutor.com/elementary-statistics/multiple-linear-regression/prediction-interval-mlr" title="Prediction Interval for MLR">Prediction Interval for MLR</a></li></ul></li><li class="parent closed"><span class="parent closed"></span><a href="https://www.r-tutor.com/elementary-statistics/logistic-regression" title="Logistic Regression">Logistic Regression</a><ul><li><a href="https://www.r-tutor.com/elementary-statistics/logistic-regression/estimated-logistic-regression-equation" title="Estimated Logistic Regression Equation">Estimated Logistic Regression Equation</a></li><li><a href="https://www.r-tutor.com/elementary-statistics/logistic-regression/significance-test-logistic-regression" title="Significance Test for Logistic Regression">Significance Test for Logistic Regression</a></li></ul></li></ul></li><li class="parent closed"><span class="parent closed"></span><a href="https://www.r-tutor.com/gpu-computing" title="GPU Computing with R">GPU Computing with R</a><ul><li><a href="https://www.r-tutor.com/gpu-computing/clustering/distance-matrix" title="Distance Matrix by GPU">Distance Matrix by GPU</a></li><li><a href="https://www.r-tutor.com/gpu-computing/clustering/hierarchical-cluster-analysis" title="Hierarchical Cluster Analysis">Hierarchical Cluster Analysis</a></li><li><a href="https://www.r-tutor.com/gpu-computing/correlation/kendall-rank-coefficient" title="Kendall Rank Coefficient">Kendall Rank Coefficient</a></li><li><a href="https://www.r-tutor.com/gpu-computing/correlation/kendall-tau-b" title="Significance Test for Kendall&#39;s Tau-b">Significance Test for Kendall's Tau-b</a></li><li><a href="https://www.r-tutor.com/gpu-computing/svm/rpusvm-1" title="Support Vector Machine with GPU">Support Vector Machine with GPU</a></li><li><a href="https://www.r-tutor.com/gpu-computing/svm/rpusvm-2" title="Support Vector Machine with GPU, Part II">Support Vector Machine with GPU, Part II</a></li><li><a href="https://www.r-tutor.com/gpu-computing/gaussian-process/rvbm" title="Bayesian Classification with Gaussian Process">Bayesian Classification with Gaussian Process</a></li><li><a href="https://www.r-tutor.com/gpu-computing/rbayes/rhierlmc" title="Hierarchical Linear Model">Hierarchical Linear Model</a></li><li><span></span><a href="https://www.r-tutor.com/gpu-computing/rpud-installation" title="Installing GPU Packages">Installing GPU Packages</a></li></ul></li></ul><!--[if IE]></div><![endif]-->  </div>
+</div>
+		</div>			
+	
+	</div></div>
+	<!-- content-wrap ends here -->		
+
+	<!-- footer starts here -->	
+	<div id="footer-wrap"><div id="footer-content">
+			<p class="l">
+			Copyright © 2009 - 2022 <a href="https://www.r-tutor.com/content/author">Chi Yau</a> All Rights Reserved<br>
+			Theme design by <a href="http://www.styleshout.com/" target="_blank">styleshout</a>
+            Adaptation by <a href="https://www.r-tutor.com/content/author">Chi Yau</a>
+			</p>
+
+		<br class="clear">
+	</div></div>
+	<!-- footer ends here -->
+
+  <script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var _gaq = _gaq || [];_gaq.push(["_setAccount", "UA-9827360-1"]);_gaq.push(["_trackPageview"]);(function() {var ga = document.createElement("script");ga.type = "text/javascript";ga.async = true;ga.src = ("https:" == document.location.protocol ? "https://ssl" : "http://www") + ".google-analytics.com/ga.js";var s = document.getElementsByTagName("script")[0];s.parentNode.insertBefore(ga, s);})();
+//--><!]]>
+</script>
+
+
+</body></html>
